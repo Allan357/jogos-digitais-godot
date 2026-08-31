@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://cqpyjy12106un" path="res://sprites/Seasonal Tilesets/3 - Tropics/Background parts/3 - Floating_clouds.png" id="6_ukyf8"]
 [ext_resource type="Texture2D" uid="uid://bscpuvwy837jj" path="res://sprites/Seasonal Tilesets/3 - Tropics/Background parts/1 - Waters_version_1.png" id="7_aitm3"]
 [ext_resource type="Texture2D" uid="uid://budosaofbjcex" path="res://sprites/Seasonal Tilesets/3 - Tropics/Background parts/2 - Waters_version_2.png" id="8_c7cbo"]
+[ext_resource type="PackedScene" uid="uid://bdlin8hfgh7v8" path="res://entities/camera.tscn" id="11_cosdo"]
+[ext_resource type="PackedScene" uid="uid://bsikxx6mw4sxq" path="res://entities/level_end.tscn" id="12_dfsuq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ukyf8"]
 texture = ExtResource("3_yk7xu")
@@ -200,6 +202,7 @@ texture = ExtResource("2_vbx48")
 
 [sub_resource type="TileSet" id="TileSet_kgah6"]
 physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 6
 sources/0 = SubResource("TileSetAtlasSource_kqnwl")
 pattern_0 = SubResource("TileMapPattern_aitm3")
 
@@ -217,10 +220,14 @@ animations = [{
 "speed": 1.0
 }]
 
-[node name="tropical" type="Node2D" unique_id=670992734]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wpfc8"]
+size = Vector2(64, 20)
 
-[node name="player" parent="." unique_id=870111983 instance=ExtResource("1_wvnuc")]
-position = Vector2(58, 129)
+[node name="tropical" type="Node2D" unique_id=670992734]
+metadata/_edit_vertical_guides_ = [1035.0]
+
+[node name="Player" parent="." unique_id=428640437 instance=ExtResource("1_wvnuc")]
+position = Vector2(54, 128)
 
 [node name="decoration" type="TileMapLayer" parent="." unique_id=1456693792]
 tile_map_data = PackedByteArray("AAADAAYAAQAIAAAAAAAIAAgAAAABAAAAAAAMAAgAAAACAAAAAAARAAkAAAAAAAAAAAAVAAkAAAADAAAAAAAXAAoAAwAMAAUAAAAXAAsAAwAMAAYAAAAYAAoAAwAMAAUAAAAYAAsAAwAMAAYAAAAZAAoAAwAMAAUAAAAZAAsAAwAMAAYAAAAaAAoAAwAMAAUAAAAaAAsAAwAMAAYAAAAbAAoAAwAMAAUAAAAbAAsAAwAMAAYAAAAcAAoAAwAMAAUAAAAcAAsAAwAMAAYAAAAdAAoAAwAMAAUAAAAdAAsAAwAMAAYAAAAXAAwAAwAMAAYAAAAXAA0AAwAMAAYAAAAYAAwAAwAMAAYAAAAYAA0AAwAMAAYAAAAZAAwAAwAMAAYAAAAZAA0AAwAMAAYAAAAaAAwAAwAMAAYAAAAaAA0AAwAMAAYAAAAbAAwAAwAMAAYAAAAbAA0AAwAMAAYAAAAcAAwAAwAMAAYAAAAcAA0AAwAMAAYAAAAdAAwAAwAMAAYAAAAdAA0AAwAMAAYAAAATAAgAAwABAAEAAAAxAAoABAAGAAIAAAAeAAoAAwAMAAUAAAAeAAsAAwAMAAYAAAAfAAoAAwAMAAUAAAAfAAsAAwAMAAYAAAAgAAoAAwAMAAUAAAAgAAsAAwAMAAYAAAAhAAoAAwAMAAUAAAAhAAsAAwAMAAYAAAAiAAoAAwAMAAUAAAAiAAsAAwAMAAYAAAAjAAoAAwAMAAUAAAAjAAsAAwAMAAYAAAAkAAoAAwAMAAUAAAAkAAsAAwAMAAYAAAAlAAoAAwAMAAUAAAAlAAsAAwAMAAYAAAAmAAoAAwAMAAUAAAAmAAsAAwAMAAYAAAAnAAoAAwAMAAUAAAAnAAsAAwAMAAYAAAAoAAoAAwAMAAUAAAAoAAsAAwAMAAYAAAApAAoAAwAMAAUAAAApAAsAAwAMAAYAAAAqAAoAAwAMAAUAAAAqAAsAAwAMAAYAAAAeAAwAAwAMAAYAAAAfAAwAAwAMAAYAAAAgAAwAAwAMAAYAAAAhAAwAAwAMAAYAAAAiAAwAAwAMAAYAAAAjAAwAAwAMAAYAAAAkAAwAAwAMAAYAAAAlAAwAAwAMAAYAAAAmAAwAAwAMAAYAAAAnAAwAAwAMAAYAAAAoAAwAAwAMAAYAAAApAAwAAwAMAAYAAAAqAAwAAwAMAAYAAAAeAA0AAwAMAAYAAAAfAA0AAwAMAAYAAAAgAA0AAwAMAAYAAAAhAA0AAwAMAAYAAAAiAA0AAwAMAAYAAAAjAA0AAwAMAAYAAAAkAA0AAwAMAAYAAAAlAA0AAwAMAAYAAAAmAA0AAwAMAAYAAAAnAA0AAwAMAAYAAAAoAA0AAwAMAAYAAAApAA0AAwAMAAYAAAAqAA0AAwAMAAYAAAAvAAoABAADAAEAAAAsAAgAAwABAAEAAAA/AAkAAwABAAEAAAA1AAkAAwABAAEAAAArAAoAAwAMAAUAAAArAAsAAwAMAAYAAAArAAwAAwAMAAYAAAA=")
@@ -270,3 +277,16 @@ texture = ExtResource("6_ukyf8")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 576, 208)
+
+[node name="Camera" parent="." unique_id=171602951 instance=ExtResource("11_cosdo")]
+limit_right = 1035
+
+[node name="level_end" parent="." unique_id=27883121 instance=ExtResource("12_dfsuq")]
+position = Vector2(944, 210)
+next_level = "forest"
+
+[node name="CollisionShape2D" parent="level_end" index="0" unique_id=1254046613]
+position = Vector2(16, 10)
+shape = SubResource("RectangleShape2D_wpfc8")
+
+[editable path="level_end"]
