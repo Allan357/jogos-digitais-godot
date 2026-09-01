@@ -26,6 +26,10 @@
 
 ---
 
+# 3. Área secreta
+
+A pista é indicado por diamantes, fica em uma mini montanha, mas sem entrada aparente, separei dessa forma para que a unica forma de conseguir é tentar mesmo sem certeza.
+
 # 4. A Câmera
 
 Optei pela **câmera como cena própria**, pois além de ser a versão construída em aula, ela é mais flexível, permitindo trocar o alvo depois, e a outro tipo não permite ser reaproveitada em outras cenas ou projetos sem depender do personagem.
@@ -35,3 +39,9 @@ Optei pela **câmera como cena própria**, pois além de ser a versão construí
 # 5. Transição
 
 Trocar a cena durante a detecção de colisão causa um erro, pois o jogo ainda esta processando, ele ainda está usando os nós da cena pra concluir os processamentos de física.
+
+---
+
+# 6. O que travou
+
+Por incrível que pareça, eu só travei na parte da câmera, só estava sendo possivel criar o grupo no nó importado do player, e não direto na cena dele, só depois de salvar o projeto eu descobri que era isso que estava faltando.
